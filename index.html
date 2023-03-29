@@ -1,33 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>HTML,CSS,JS STUDY</title>
+  <meta charset="utf-8">
+  <title>구구단</title>
+  <script>
+    function randomInt() {
+      // 1~9의 십진 난수 리턴
+      return Math.floor(Math.random()*9) + 1; 
+    }
+    
+    function playGame() {
+      let correctCount = 0;
+      let wrongCount = 0;
+      
+      for (let i = 0; i < 10; i++) {
+        // 구구단 문제 생성
+        let ques = randomInt() + "*" + randomInt();
+        // 사용자로부터 답 입력
+        let user = prompt(ques + " 값은 얼마입니까?", 0);
+        
+        if (user == null) { // 취소 버튼이 클릭된 경우 
+          alert("구구단 연습을 종료합니다.");
+          break;
+        } else {
+          let ans = eval(ques); // 구구단 정답 계산
+          
+          if (ans == user) { // 정답과 사용자 입력 비교
+            alert("정답입니다!");
+            correctCount++;
+          } else {
+            alert("틀렸습니다. 정답은 " + ans + "입니다.");
+            wrongCount++;
+          }
+        }
+      }
+      
+      // 게임이 종료되면, 정답 횟수와 오답 횟수를 출력합니다.
+      alert("게임이 종료되었습니다.\n정답 횟수: " + correctCount + "\n오답 횟수: " + wrongCount);
+    }
+  </script>
 </head>
 <body>
-    <h1>HTML Tutorial</h1>
-
-<ol>
-<li><a href="1.html">HTML Basic</a></li>
-<li><a href="2.html">HTML Elements</a></li>
-<li><a href="3.html">HTML Attributes</a></li>
-</ol>
-<br>
-<p>
-    I have several friends I want to talk about, but today I will describe one of them. </p>
-
-
-    <img src="code-gdb227fc00_1920.jpg" width="100" height="70">
-
-    <p><strong><i><u>have been friends since we were young. Even when we went to different schools,</u></i></strong>
-
-    we kept in touch with each other. When we served military duty in different places, 
-    we still talked to each other and helped each other to overcome the difficulties. </p>
-    For me best friends mean being there when they need me, because it sounds easy, 
-    but whenever they need me, being able to support them is not always easy. I think only best friends can do this.
-     I do not know how long we will stay good friends, but I would like to as long as we live.
-
-    
+  <h3>Math를 활용한 구구단 연습</h3>
+  <button onclick="playGame()">게임 시작</button>
 </body>
 </html>
-
