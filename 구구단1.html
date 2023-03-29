@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Math를 활용한 구구단 연습</title>
+  <script>
+    function randomInt() {
+      // 1~9의 십진 난수 리턴
+      return Math.floor(Math.random()*9) + 1; 
+    }
+    
+    function playGame() {
+      let correctCount = 0;
+      let wrongCount = 0;
+      
+      for (let i = 0; i < 10; i++) {
+        // 구구단 문제 생성
+        let ques = randomInt() + "*" + randomInt();
+        // 사용자로부터 답 입력
+        let user = prompt(ques + " 값은 얼마입니까?", 0);
+        
+        if (user == null) { // 취소 버튼이 클릭된 경우 
+          alert("구구단 연습을 종료합니다.");
+          break;
+        } else {
+          let ans = eval(ques); // 구구단 정답 계산
+          
+          if (ans == user) { // 정답과 사용자 입력 비교
+            alert("정답입니다!");
+            correctCount++;
+          } else {
+            alert("틀렸습니다. 정답은 " + ans + "입니다.");
+            wrongCount++;
+          }
+        }
+      }
+      
+      // 게임이 종료되면, 정답 횟수와 오답 횟수를 출력합니다.
+      alert("게임이 종료되었습니다.\n정답 횟수: " + correctCount + "\n오답 횟수: " + wrongCount);
+    }
+  </script>
+</head>
+<body>
+  <h3>Math를 활용한 구구단 연습</h3>
+  <button onclick="playGame()">게임 시작</button>
+</body>
+</html>
